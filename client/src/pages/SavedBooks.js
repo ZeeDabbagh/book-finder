@@ -37,7 +37,7 @@ const SavedBooks = () => {
       });
 
       setUserData(data.removeBook);
-      removeBookId(bookId);
+      removeBook(bookId);
     } catch (err) {
       console.error(err);
     }

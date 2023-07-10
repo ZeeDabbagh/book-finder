@@ -17,11 +17,15 @@ import Auth from '../utils/auth';
 const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+  const [savedBookIds, setSavedBookIds] = useState([]);
   const [saveBook] = useMutation(SAVE_BOOK);
 
+  const searchGoogleBooks = (query) => {
+    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+  };
+
   useEffect(() => {
-    return () => saveBookIds(savedBookIds);
+    return () => saveBook(savedBookIds);
   });
 
   const handleFormSubmit = async (event) => {
